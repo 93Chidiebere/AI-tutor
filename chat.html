@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Tutor Chat</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <main class="chat">
+    <header class="chat__header">
+      <a href="study.html"> <button class="chat__back">&#8592;</button></a>
+      <h1 class="chat__title">AI Tutor</h1>
+    </header>
+
+    <section class="chat__messages">
+      <article class="message message--ai">
+        <img src="ai.webp" alt="AI Avatar" class="message__avatar" />
+        <div class="message__bubble">
+          Hi there! Ready to learn about fractions?
+        </div>
+      </article>
+
+      <article class="message message--user">
+        <div class="message__bubble message__bubble--user">
+          Yes, I'm ready!
+        </div>
+      </article>
+
+      <article class="message message--ai">
+        <img src="ai.webp" alt="AI Avatar" class="message__avatar" />
+        <div class="message__bubble">
+          Let’s start simple:<br>
+          A fraction represents a part of a whole.<br>
+          For example, ½ means one part out of two equal parts.
+        </div>
+      </article>
+
+      <article class="message message--user">
+        <div class="message__bubble message__bubble--user">
+          Okay, I get that.
+        </div>
+      </article>
+
+      <article class="message message--ai">
+        <img src="ai.webp" alt="AI Avatar" class="message__avatar" />
+        <div class="message__bubble">
+          Great! Can you tell me what ⁴⁄₄ means?
+        </div>
+      </article>
+    </section>
+
+    <footer class="chat__input">
+      <input type="text" placeholder="Message" class="chat__field" />
+      <button class="chat__send">&#9658;</button>
+    </footer>
+  </main>
+</body>
+</html>

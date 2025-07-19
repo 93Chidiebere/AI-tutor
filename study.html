@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Study Plan</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style type="text/css">
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #111827;
+            --muted-text: #6b7280;
+            --bg: #ffffff;
+            --card-radius: 1rem;
+
+            --day-peach: #fff4eb;
+            --day-blue: #eef7ff;
+            --day-purple: #f6f3ff;
+            --day-gray: #f2f4f6;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 1.5rem;
+        }
+
+        .study {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .study__title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .study__description {
+            color: var(--muted-text);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .study__progress {
+            background: #e5e7eb;
+            border-radius: 999px;
+            height: 6px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .study__progress-bar {
+            height: 100%;
+            width: 30%;
+            background-color: #34d399;
+        }
+
+        .study__days {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .study__card {
+            display: flex;
+            align-items: center;
+            padding: 1rem;
+            border-radius: var(--card-radius);
+            background-color: var(--day-gray);
+        }
+
+        .card--peach {
+            background-color: var(--day-peach);
+        }
+
+        .card--blue {
+            background-color: var(--day-blue);
+        }
+
+        .card--purple {
+            background-color: var(--day-purple);
+        }
+
+        .card--gray {
+            background-color: var(--day-gray);
+        }
+
+        .study__day {
+            font-weight: 600;
+            margin-right: 1rem;
+            color: var(--muted-text);
+            min-width: 60px;
+        }
+
+        .study__content h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .study__content p {
+            font-size: 0.875rem;
+            color: var(--muted-text);
+        }
+
+        .study__actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            padding: 0.9rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #1e40af;
+        }
+
+        .link-edit {
+            font-size: 0.95rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .link-edit:hover {
+            text-decoration: underline;
+        }
+
+        /* Desktop Enhancer */
+        @media (min-width: 768px) {
+            body {
+                padding: 2rem 3rem;
+            }
+
+            .study__days {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 1.5rem;
+            }
+
+            .study__actions {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .btn-primary {
+                font-size: 1.05rem;
+                padding: 1rem 2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="chat__header">
+        <a href="learn.html"> <button class="chat__back">&#8592;</button></a>
+        <h1 class="chat__title">AI Tutor</h1>
+    </header>
+    <br>
+    <main class="study">
+        <section class="study__intro">
+            <h1 class="study__title">Your Study Plan</h1>
+            <p class="study__description">Here is your personalized plan to understand the basics.</p>
+            <div class="study__progress">
+                <div class="study__progress-bar"></div>
+            </div>
+        </section>
+
+        <section class="study__days">
+            <div class="study__card card--peach">
+                <div class="study__day">Day 1</div>
+                <div class="study__content">
+                    <h3>Fractions</h3>
+                    <p>Introduction + Quiz</p>
+                </div>
+            </div>
+
+            <div class="study__card card--blue">
+                <div class="study__day">Day 2</div>
+                <div class="study__content">
+                    <h3>Decimals</h3>
+                    <p>Basics + Practice</p>
+                </div>
+            </div>
+
+            <div class="study__card card--purple">
+                <div class="study__day">Day 3</div>
+                <div class="study__content">
+                    <h3>Geometry</h3>
+                    <p>Shapes + Game</p>
+                </div>
+            </div>
+
+            <div class="study__card card--gray">
+                <div class="study__day">Day 4</div>
+                <div class="study__content">
+                    <h3>Review</h3>
+                    <p>+ Mini Test</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="study__actions">
+            <a href="learn.html"><button class="btn-primary">Start Today’s Lesson</button></a>
+            <a href="#" class="link-edit">Edit Plan</a>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select Topics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        :root {
+            --font-family: 'Inter', sans-serif;
+
+            --color-text: #111;
+            --color-bg: #fff;
+            --color-bg-intro: #fff6e6;
+
+            --color-violet: #e4dcff;
+            --color-orange: #ffe6b5;
+            --color-beige: #f5f0cb;
+            --color-green: #d6f4d1;
+            --color-blue: #dce9f6;
+
+            --color-checkbox-selected: #1c1c1c;
+            --color-checkbox-unselected: #ccc;
+
+            --radius: 0.8rem;
+            --gap: 1rem;
+            --padding: 1rem;
+            --transition: 0.2s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background: var(--color-bg);
+            padding: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .topics__intro {
+            background-color: var(--color-bg-intro);
+            padding: var(--padding);
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+        }
+
+        .topics__intro h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .topics__intro p {
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        .topics__list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--gap);
+            margin-bottom: 2rem;
+        }
+
+        .topic-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: var(--padding);
+            border-radius: var(--radius);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background var(--transition), border var(--transition);
+            position: relative;
+        }
+
+        .topic-card input[type="checkbox"] {
+            display: none;
+        }
+
+        .topic-card .checkmark {
+            width: 24px;
+            height: 24px;
+            border-radius: 6px;
+            background-color: #fff;
+            border: 2px solid var(--color-checkbox-unselected);
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .topic-card input:checked+.checkmark {
+            background-color: var(--color-checkbox-selected);
+            border-color: var(--color-checkbox-selected);
+        }
+
+        .topic-card input:checked+.checkmark::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            left: 7px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .topic-card__left {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .topic-card__icon {
+            font-size: 1.4rem;
+        }
+
+        .topic-card__label {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Card Colors */
+        .topic-card--violet {
+            background-color: var(--color-violet);
+        }
+
+        .topic-card--orange {
+            background-color: var(--color-orange);
+        }
+
+        .topic-card--beige {
+            background-color: var(--color-beige);
+        }
+
+        .topic-card--green {
+            background-color: var(--color-green);
+        }
+
+        .topic-card--blue {
+            background-color: var(--color-blue);
+        }
+
+        .topics__continue {
+            width: 100%;
+            background-color: #1a3ee2;
+            color: #fff;
+            padding: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background var(--transition);
+        }
+
+        .topics__continue:hover {
+            background-color: #112fb5;
+        }
+
+        /* Responsive Desktop Layout */
+        @media (min-width: 768px) {
+            .topics {
+                max-width: 768px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .topics__list {
+                grid-template-columns: repeat(2, 1fr);
+                display: grid;
+                gap: 1.5rem;
+            }
+
+            .topics__intro h1 {
+                font-size: 2.2rem;
+            }
+
+            .topics__continue {
+                width: auto;
+                display: block;
+                margin-left: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="chat__header">
+        <a href="goal.html"> <button class="chat__back">&#8592;</button></a>
+        <h1 class="chat__title">AI Tutor</h1>
+    </header>
+    <br>
+    <main class="topics">
+
+        <section class="topics__intro">
+            <h1>Hey, Alex</h1>
+            <p>Which topics do you want to start with?</p>
+        </section>
+
+        <section class="topics__list">
+            <label class="topic-card topic-card--violet">
+                <div class="topic-card__left">
+                    <span class="topic-card__icon">📊</span>
+                    <span class="topic-card__label">Fractions</span>
+                </div>
+                <input type="checkbox" checked />
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="topic-card topic-card--orange">
+                <div class="topic-card__left">
+                    <span class="topic-card__icon">🧮</span>
+                    <span class="topic-card__label">Decimals</span>
+                </div>
+                <input type="checkbox" checked />
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="topic-card topic-card--beige">
+                <div class="topic-card__left">
+                    <span class="topic-card__icon">🧾</span>
+                    <span class="topic-card__label">Arithmetic</span>
+                </div>
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="topic-card topic-card--green">
+                <div class="topic-card__left">
+                    <span class="topic-card__icon">📐</span>
+                    <span class="topic-card__label">Geometry</span>
+                </div>
+                <input type="checkbox" checked />
+                <span class="checkmark"></span>
+            </label>
+
+            <label class="topic-card topic-card--blue">
+                <div class="topic-card__left">
+                    <span class="topic-card__icon">❓</span>
+                    <span class="topic-card__label">Word Problems</span>
+                </div>
+                <input type="checkbox" />
+                <span class="checkmark"></span>
+            </label>
+        </section>
+
+        <a href="study.html"> <button class="topics__continue">Continue</button></a>
+    </main>
+</body>
+
+</html>

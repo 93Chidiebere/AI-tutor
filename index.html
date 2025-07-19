@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Subject Selection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+        :root {
+            --primary-font: 'Inter', sans-serif;
+
+            --color-math: #c9b7ff;
+            --color-english: #ffe3a1;
+            --color-science: #c1e7da;
+            --color-geography: #cde4ff;
+            --color-chemistry: #f7b5b5;
+            --color-computer: #b8e3e0;
+            --color-biology: #d3c9ff;
+            --color-critical-thinking: #ffe299;
+
+            --color-text: #111;
+            --color-check: #fff;
+            --color-check-bg: #333;
+
+            --gap: 1rem;
+            --card-padding: 1.2rem;
+            --border-radius: 1rem;
+            --transition-speed: 0.2s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--primary-font);
+            background: #fafafa;
+            padding: 1.5rem;
+            color: var(--color-text);
+        }
+
+        .subject-selector__header {
+            margin-bottom: 2rem;
+        }
+
+        .subject-selector__header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-selector__header p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #555;
+        }
+
+        .subject-selector__grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+        }
+
+        /* Subject Cards */
+        .subject-card {
+            position: relative;
+            border: none;
+            padding: var(--card-padding);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            text-align: left;
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: background var(--transition-speed), transform var(--transition-speed);
+            cursor: pointer;
+            min-height: 100px;
+        }
+
+        /* Colors by subject using data-attribute for future scalability */
+        .subject-card[data-subject="math"] {
+            background-color: var(--color-math);
+        }
+
+        .subject-card[data-subject="english"] {
+            background-color: var(--color-english);
+        }
+
+        .subject-card[data-subject="science"] {
+            background-color: var(--color-science);
+        }
+
+        .subject-card[data-subject="geography"] {
+            background-color: var(--color-geography);
+        }
+
+        .subject-card[data-subject="chemistry"] {
+            background-color: var(--color-chemistry);
+        }
+
+        .subject-card[data-subject="computer"] {
+            background-color: var(--color-computer);
+        }
+
+        .subject-card[data-subject="biology"] {
+            background-color: var(--color-biology);
+        }
+
+        .subject-card[data-subject="critical-thinking"] {
+            background-color: var(--color-critical-thinking);
+        }
+
+        .subject-card__icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subject-card__label {
+            font-size: 1rem;
+        }
+
+        .subject-card__check {
+            position: absolute;
+            top: 0.7rem;
+            right: 0.7rem;
+            background: var(--color-check-bg);
+            color: var(--color-check);
+            border-radius: 50%;
+            font-size: 0.8rem;
+            width: 1.3rem;
+            height: 1.3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .subject-card:not(.subject-card--selected) .subject-card__check {
+            display: none;
+        }
+
+        .app__continue {
+            padding: 1rem;
+            background-color: var(--primary-color);
+            color: #fff;
+            font-weight: 600;
+            border: none;
+            width: 100%;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color var(--transition-speed);
+        }
+
+        .app__continue:hover,
+        .app__continue:focus {
+            background-color: #1749cc;
+        }
+
+
+        /* Hover (desktop only) */
+        @media (hover: hover) {
+            .subject-card:hover {
+                transform: scale(1.02);
+            }
+        }
+
+        /* Desktop Layout */
+        @media (min-width: 768px) {
+            .subject-selector {
+                max-width: 1200px;
+                margin: 0 auto;
+                padding: 2rem;
+            }
+
+            .subject-selector__grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.5rem;
+            }
+
+            .subject-selector__header h1 {
+                font-size: 2.5rem;
+            }
+
+            .subject-selector__header p {
+                font-size: 1.2rem;
+            }
+
+            .subject-card {
+                min-height: 140px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+      <header class="chat__header">
+      <h1 class="chat__title">AI Tutor</h1>
+    </header>
+    <br>
+    <main class="subject-selector">
+        <header class="subject-selector__header">
+            <h1>Hey Alex</h1>
+            <p>What subjects do you want to learn?</p>
+        </header>
+        <section class="subject-selector__grid">
+            <button class="subject-card subject-card--selected" data-subject="math">
+                <span class="subject-card__icon">➕</span>
+                <span class="subject-card__label">Math</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card subject-card--selected" data-subject="english">
+                <span class="subject-card__icon">📖</span>
+                <span class="subject-card__label">English</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="science">
+                <span class="subject-card__icon">🧪</span>
+                <span class="subject-card__label">Science</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="geography">
+                <span class="subject-card__icon">🌍</span>
+                <span class="subject-card__label">Geography</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="chemistry">
+                <span class="subject-card__icon">⚗️</span>
+                <span class="subject-card__label">Chemistry</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="computer">
+                <span class="subject-card__icon">💻</span>
+                <span class="subject-card__label">Computer</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="biology">
+                <span class="subject-card__icon">🧬</span>
+                <span class="subject-card__label">Biology</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+            <button class="subject-card" data-subject="critical-thinking">
+                <span class="subject-card__icon">🧠</span>
+                <span class="subject-card__label">Critical Thinking</span>
+                <span class="subject-card__check">✔</span>
+            </button>
+        </section>
+        <br>
+        <a href="goal.html"><button class="app__continue">Continue</button></a>
+    </main>
+    <script>
+        document.querySelectorAll('.subject-card').forEach(card => {
+            card.addEventListener('click', () => {
+                card.classList.toggle('subject-card--selected');
+            });
+        });
+    </script>
+</body>
+
+</html>
